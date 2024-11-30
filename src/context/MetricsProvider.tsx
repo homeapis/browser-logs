@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, createContext, useEffect } from "react";
+import React, { useContext, createContext, useEffect, useState } from "react";
 import { AnalyticsTarget, AnalyticsTargetConfig, LogType } from "../utils/target";
 
 // Create the context to pass analytics to the app
@@ -12,31 +12,33 @@ interface MetricsProviderProps {
     config: AnalyticsTargetConfig;
 }
 
-export default function AppMetricsProvider ({ pathname, config, children }: MetricsProviderProps) {
-    const [analytics, setAnalytics] = React.useState<AnalyticsTarget | null>(null);
+export default function AppMetricsProvider({ pathname, config, children }: MetricsProviderProps) {
+    const [analytics, setAnalytics] = useState<AnalyticsTarget | null>(null);
 
     useEffect(() => {
+        let analyticsInstance: AnalyticsTarget;
+    
         const initAnalytics = async () => {
-            // Initialize the analytics instance with the loaded config
-            const analyticsInstance = new AnalyticsTarget(config);
-
-            // Optional: Start health checks (if desired)
+            // Initialize the analytics instance only once
+            analyticsInstance = new AnalyticsTarget(config);
+    
+            // Start health checks
             analyticsInstance.startHealthCheck();
-
+    
             // Set the analytics instance in state
             setAnalytics(analyticsInstance);
         };
-
+    
         initAnalytics();
-
-        // Cleanup the analytics instance on unmount
+    
+        // Cleanup on unmount
         return () => {
-            if (analytics) {
-                analytics.stopHealthCheck();
+            if (analyticsInstance) {
+                analyticsInstance.stopHealthCheck();
             }
         };
-    }, [analytics]); // Only run when analytics is updated
-
+    }, []); // Dependency array ensures this runs only once
+    
     if (!analytics) return null; // Optionally, show a loading spinner here
 
     // Create the enhanced analytics object with the logEvent function
@@ -57,7 +59,7 @@ export default function AppMetricsProvider ({ pathname, config, children }: Metr
             {children}
         </MetricsContext.Provider>
     );
-};
+}
 
 // Custom hook to use the metrics context and access analytics instance
 export const useMetrics = (): AnalyticsTarget => {
