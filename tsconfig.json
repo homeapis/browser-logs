@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
+    "module": "ESNext", // For ESM
+    "outDir": "./dist/esm",
+    "declaration": true, // Generate type declarations
+    "declarationDir": "./dist",
+    "moduleResolution": "node",
     "jsx": "react",
     "target": "ES6",
-    "declaration": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["node"],  // Ensure node types are included
     "typeRoots": ["./node_modules/@types", "./src/types"],  // Optional: Add a custom types directory
-    "outDir": "./dist",
     "rootDir": "./src"
   },
   "include": [

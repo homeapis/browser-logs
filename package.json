@@ -2,14 +2,19 @@
   "name": "@homeapis/browser-logs",
   "version": "1.2.1",
   "description": "A React/Next.js SDK for logging from browsers",
-  "main": "dist/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
   "types": "dist/index.d.ts",
   "repository": {
     "type": "github",
     "url": "https://github.com/homeapis/browser-logs"
   },
   "scripts": {
-    "build": "npx rimraf ./dist && tsc",
+    "build": "npx rimraf ./dist && tsc && tsc --project tsconfig.cjs.json",
     "test": "jest",
     "postversion": "git push && git push --tags",
     "lint": "eslint . --ext .ts,.tsx",
