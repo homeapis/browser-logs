@@ -4,9 +4,14 @@
   "description": "A React/Next.js SDK for logging from browsers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/homeapis/browser-logs"
+  },
   "scripts": {
     "build": "npx rimraf ./dist && tsc",
     "test": "jest",
+    "postversion": "git push && git push --tags",
     "lint": "eslint . --ext .ts,.tsx",
     "prepublishOnly": "npm run build"
   },
@@ -16,7 +21,7 @@
     "react",
     "sdk"
   ],
-  "author": "Your Name",
+  "author": "HomeAPIs.com contributors",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.14",
