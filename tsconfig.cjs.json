@@ -1,13 +1,18 @@
 {
-    "compilerOptions": {
-      "module": "CommonJS",
-      "outDir": "./dist/cjs",
-      "declaration": false,
-      "target": "ES6",
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "jsx": "react"
-    },
-    "include": ["src"]
-  }
-  
+  "compilerOptions": {
+    "module": "CommonJS",         // CommonJS module
+    "outDir": "./dist/cjs",       // Output CJS files to dist/cjs
+    "declaration": true,          // Generate type declarations
+    "declarationDir": "./dist",   // Store declaration files in dist
+    "emitDeclarationOnly": false, // Emit JS files along with declarations
+    "moduleResolution": "node",   // Resolve modules in Node.js style
+    "jsx": "react",               // JSX support (for React)
+    "target": "ES6",              // ES6 target
+    "strict": true,               // Enable strict type checking
+    "esModuleInterop": true,      // Allow default import from CommonJS
+    "skipLibCheck": true,         // Skip library check
+    "forceConsistentCasingInFileNames": true, // Ensure consistent casing
+    "rootDir": "./src"            // Root directory for source files
+  },
+  "include": ["src/**/*"]         // Include all TypeScript files
+}

@@ -1,22 +1,21 @@
 {
   "compilerOptions": {
-    "module": "ESNext", // For ESM
-    "outDir": "./dist/esm",
+    "module": "ESNext", // ESM module
+    "outDir": "./dist/esm", // Output ESM files to dist/esm
     "declaration": true, // Generate type declarations
-    "declarationDir": "./dist",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "target": "ES6",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["node"],  // Ensure node types are included
-    "typeRoots": ["./node_modules/@types", "./src/types"],  // Optional: Add a custom types directory
-    "rootDir": "./src"
+    "declarationDir": "./dist", // Store declaration files in dist
+    "emitDeclarationOnly": true, // Only emit declarations (no JS)
+    "moduleResolution": "node", // Resolve modules in Node.js style
+    "jsx": "react", // JSX support (for React)
+    "target": "ES6", // ES6 target
+    "strict": true, // Enable strict type checking
+    "esModuleInterop": true, // Allow default import from CommonJS
+    "skipLibCheck": true, // Skip library check
+    "forceConsistentCasingInFileNames": true, // Ensure consistent casing
+    "rootDir": "./src" // Root directory for source files
   },
   "include": [
     "src/**/*",
     "node_modules/@types"
-  ]
+  ] // Include all TypeScript files
 }
