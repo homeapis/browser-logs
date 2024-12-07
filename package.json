@@ -1,6 +1,6 @@
 {
   "name": "@homeapis/browser-logs",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A React/Next.js SDK for logging from browsers",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
