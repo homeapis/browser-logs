@@ -4,7 +4,7 @@
     "outDir": "./dist/esm", // Output ESM files to dist/esm
     "declaration": true, // Generate type declarations
     "declarationDir": "./dist", // Store declaration files in dist
-    "emitDeclarationOnly": true, // Only emit declarations (no JS)
+    "emitDeclarationOnly": false, // Only emit declarations (no JS)
     "moduleResolution": "node", // Resolve modules in Node.js style
     "jsx": "react", // JSX support (for React)
     "target": "ES6", // ES6 target
